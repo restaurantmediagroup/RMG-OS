@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { EMERGENCY_ROUTING } from '../data/catalog';
 import { useStore } from '../store';
 import { officeStatus, upcomingClosures, weeklyHours, fmtFull } from '../lib/time';
-import { Modal, SimTag } from './ui';
+import { Modal, SimTag, RmgAvatar } from './ui';
 import { useRequestsNav } from '../lib/nav';
 
 /** Account Manager contact uses the client's dedicated Slack channel. */
@@ -12,7 +12,7 @@ export function useContactAM() {
     <Modal title="Contact Your Account Manager" sub="Marketing, Requests & Support">
       <div><SimTag>Slack link simulated in demo</SimTag></div>
       <p>Your account manager is reachable in your dedicated Slack channel for conversation, clarifications and urgent communication.</p>
-      <div className="minirow"><div className="label" style={{ fontWeight: 700 }}>#rmg-{client.id}-team</div><p className="note">Dedicated Slack channel for {client.name}</p></div>
+      <div className="minirow row"><RmgAvatar size={36} /><div><div className="label" style={{ fontWeight: 700 }}>#rmg-{client.id}-team</div><p className="note">Dedicated Slack channel for {client.name}</p></div></div>
       <p className="note">New work requests go through Submit a Request so they are tracked with a request record and turnaround estimate.</p>
       <button className="btn primary block" onClick={closeModal}>Open Slack Channel</button>
     </Modal>,

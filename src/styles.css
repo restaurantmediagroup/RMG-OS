@@ -87,6 +87,8 @@ p { margin: 0; }
 /* ---------- Brand mark ---------- */
 .brandmark { display: flex; align-items: center; gap: 10px; }
 .brandmark .logo { width: 30px; height: 30px; border-radius: 50%; background: var(--orange); color: #fff; display: grid; place-items: center; font-weight: 900; font-size: 11px; flex-shrink: 0; }
+.rmg-avatar { border-radius: 50%; background: #fff; flex-shrink: 0; display: inline-block; vertical-align: middle; object-fit: cover; box-shadow: 0 0 0 1px rgba(20,35,60,0.08); }
+.note .rmg-avatar { margin: -2px 4px 0 0; }
 .brandmark .t1 { font-weight: 700; font-size: 14px; line-height: 1.1; color: #fff; }
 .brandmark .t2 { font-size: 9px; letter-spacing: 0.06em; color: rgba(255,255,255,0.75); text-transform: uppercase; }
 

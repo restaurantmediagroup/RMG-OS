@@ -1,6 +1,7 @@
 import { useRef, type ReactNode } from 'react';
 import type { Attachment } from '../data/types';
 import { useStore } from '../store';
+import rmgLogo from '../assets/rmg-logo.png';
 
 export function PageHeader({ title, sub }: { title: string; sub: string }) {
   const { client, state } = useStore();
@@ -20,10 +21,15 @@ export function PageHeader({ title, sub }: { title: string; sub: string }) {
 export function BrandMark() {
   return (
     <div className="brandmark">
-      <div className="logo" aria-hidden="true">RM</div>
+      <RmgAvatar size={30} />
       <div><div className="t1">RMG OS</div><div className="t2">Marketing Portal</div></div>
     </div>
   );
+}
+
+/** RMG's profile photo: the circular logo, used wherever RMG or an RMG team member appears. */
+export function RmgAvatar({ size = 40, label }: { size?: number; label?: string }) {
+  return <img className="rmg-avatar" src={rmgLogo} width={size} height={size} alt={label ?? ''} aria-hidden={label ? undefined : true} />;
 }
 
 export function Tabs<T extends string>({ items, value, onChange, four, label }: { items: T[]; value: T; onChange: (v: T) => void; four?: boolean; label: string }) {
