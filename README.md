@@ -9,6 +9,10 @@ Live demo: https://claude.ai/artifact/G5X8k2soucM8zhgUE9BfAf
     npm run dev      # http://localhost:5173
     npm run build    # single-file build in dist/index.html
 
+## Live site (GitHub Pages)
+
+Every push to `main` builds the app and publishes it to https://restaurantmediagroup.github.io/RMG-OS/ via `.github/workflows/deploy-pages.yml`. One-time setup: in the repo's Settings → Pages, set Source to **GitHub Actions**.
+
 ## Structure
 - `src/pages/` one file per portal page (Home, Performance, Content, Requests, Reports, Brand, Account) plus `Admin.tsx` (internal RMG demo)
 - `src/components/` shared primitives (header, tabs, badges, modals, file input) and demo controls
