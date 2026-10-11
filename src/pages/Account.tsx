@@ -3,7 +3,7 @@ import { useStore } from '../store';
 import { useRequestsNav } from '../lib/nav';
 import { OPEN_STATUSES, type Attachment } from '../data/types';
 import { TURNAROUND_TEXT, EMERGENCY_ROUTING } from '../data/catalog';
-import { Badge, FileInput, Ico, ListRow, Modal, PageFoot, PageHeader, SimTag, Toggle, useInfo } from '../components/ui';
+import { Badge, FileInput, Ico, ListRow, Modal, PageFoot, PageHeader, SimTag, Toggle, useInfo, RmgAvatar } from '../components/ui';
 import { BusinessHoursPanel, Field } from '../components/shared';
 
 type Screen = 'overview' | 'business' | 'services' | 'preferences' | 'policy-hours' | 'policy-requests' | 'policy-shoot';
@@ -140,8 +140,8 @@ function Business({ anchor }: { anchor: string }) {
         <hr className="divider" />
         <p style={{ fontWeight: 700, fontSize: 13 }}>Your RMG Team</p>
         <div className="grid2 stack-mobile" style={{ marginTop: 10 }}>
-          <div className="row"><Ico lg>AM</Ico><div><div style={{ fontWeight: 700 }}>Account Manager</div><div className="note">Marketing strategy and requests</div></div></div>
-          <div className="row"><Ico lg>PH</Ico><div><div style={{ fontWeight: 700 }}>Photographer</div><div className="note">Content shoot scheduling</div></div></div>
+          <div className="row"><RmgAvatar /><div><div style={{ fontWeight: 700 }}>Account Manager</div><div className="note">Marketing strategy and requests</div></div></div>
+          <div className="row"><RmgAvatar /><div><div style={{ fontWeight: 700 }}>Photographer</div><div className="note">Content shoot scheduling</div></div></div>
         </div>
         <div className="minirow" style={{ marginTop: 14, background: 'var(--blue-panel)', borderColor: 'var(--blue-panel-line)', fontSize: 11.5 }}>Public-facing updates require RMG verification before publishing.</div>
       </section>

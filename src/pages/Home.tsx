@@ -3,7 +3,7 @@ import { useStore } from '../store';
 import { AD_STATE, SHOOT_BADGE, fmtNum, shootStatus } from '../lib/derive';
 import { fmtFull, fmtMonthDay, greeting, officeStatus } from '../lib/time';
 import { useRequestsNav } from '../lib/nav';
-import { Badge, BrandMark, Ico, PageFoot, SimTag, useInfo } from '../components/ui';
+import { Badge, BrandMark, Ico, PageFoot, SimTag, useInfo, RmgAvatar } from '../components/ui';
 import { BusinessHoursPanel, EmergencyGuidance, useContactAM, useContactPhotographer } from '../components/shared';
 import { ShootActions, useShootDetails } from './Content';
 import type { AdState } from '../data/types';
@@ -59,8 +59,8 @@ export default function Home() {
       <section className="card">
         <div className="row between"><h2 className="card-title">Your RMG Team</h2><span className="note">Quick contact</span></div>
         <div style={{ marginTop: 6 }}>
-          <div className="list-row"><Ico round lg>AM</Ico><div><div className="t">Account Manager</div><div className="s">Marketing &amp; support</div></div><button className="btn" style={{ marginLeft: 'auto', minWidth: 80 }} onClick={contactAM}>Contact</button></div>
-          <div className="list-row"><Ico round lg>PH</Ico><div><div className="t">Photographer</div><div className="s">Photoshoot scheduling</div></div><button className="btn" style={{ marginLeft: 'auto', minWidth: 80 }} onClick={contactPH}>Contact</button></div>
+          <div className="list-row"><RmgAvatar /><div><div className="t">Account Manager</div><div className="s">Marketing &amp; support</div></div><button className="btn" style={{ marginLeft: 'auto', minWidth: 80 }} onClick={contactAM}>Contact</button></div>
+          <div className="list-row"><RmgAvatar /><div><div className="t">Photographer</div><div className="s">Photoshoot scheduling</div></div><button className="btn" style={{ marginLeft: 'auto', minWidth: 80 }} onClick={contactPH}>Contact</button></div>
         </div>
       </section>
 
