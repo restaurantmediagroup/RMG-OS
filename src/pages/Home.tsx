@@ -3,7 +3,7 @@ import { useStore } from '../store';
 import { AD_STATE, SHOOT_BADGE, fmtNum, shootStatus } from '../lib/derive';
 import { fmtFull, fmtMonthDay, greeting, officeStatus } from '../lib/time';
 import { useRequestsNav } from '../lib/nav';
-import { Badge, BrandMark, Ico, PageFoot, SimTag, useInfo, RmgAvatar } from '../components/ui';
+import { Badge, BrandMark, Ico, PageFoot, SimTag, useInfo, TeamAvatar } from '../components/ui';
 import { BusinessHoursPanel, EmergencyGuidance, useContactAM, useContactPhotographer } from '../components/shared';
 import { ShootActions, useShootDetails } from './Content';
 import type { AdState } from '../data/types';
@@ -23,8 +23,8 @@ export default function Home() {
   const holidayDone = client.actionItems.length === 0;
 
   const shootLine = ss === 'scheduled' ? `${fmtFull(client.shoot.date!).replace(/, (\d{4})$/, ', $1')}  |  ${client.shoot.time!.replace(' ', '\u00a0')}`
-    : ss === 'pending' ? 'Confirm with your photographer' : ss === 'overdue' ? 'Respond to your photographer' : 'No shoot scheduled yet';
-  const shootSub = ss === 'scheduled' ? `${client.shoot.type}  |  ${client.shoot.location}` : ss === 'pending' ? `${client.shoot.type}  |  Date/time not confirmed` : ss === 'overdue' ? `${client.shoot.type}  |  Scheduling deadline missed` : 'Contact your photographer to schedule';
+    : ss === 'pending' ? 'Confirm With Your Photographer' : ss === 'overdue' ? 'Respond to Your Photographer' : 'No Shoot Scheduled Yet';
+  const shootSub = ss === 'scheduled' ? `${client.shoot.type}  |  ${client.shoot.location}` : ss === 'pending' ? `${client.shoot.type}  |  Date/Time Not Confirmed` : ss === 'overdue' ? `${client.shoot.type}  |  Scheduling Deadline Missed` : 'Contact Your Photographer to Schedule';
 
   return (
     <>
@@ -32,19 +32,19 @@ export default function Home() {
         <div style={{ minWidth: 0 }}>
           <BrandMark />
           <h1>{greeting(now)}</h1>
-          <p style={{ fontSize: 12.5, color: 'rgba(255,255,255,.85)', marginTop: 8 }}>Your restaurant's marketing at a glance</p>
+          <p style={{ fontSize: 12.5, color: 'rgba(255,255,255,.85)', marginTop: 8 }}>Your restaurant's marketing at a glance.</p>
         </div>
         <div className="hours-col stack-sm" style={{ alignItems: 'stretch', flexShrink: 0 }}>
           <div className="hours-card">
-            <div className="st"><span className={`statusdot ${office.open ? 'green' : 'red'}`} />{office.open ? 'RMG is Open' : 'RMG is Closed'}</div>
+            <div className="st"><span className={`statusdot ${office.open ? 'green' : 'red'}`} />{office.open ? 'RMG Is Open' : 'RMG Is Closed'}</div>
             <div style={{ color: 'var(--muted)' }}>{office.todayLabel}</div>
             {!office.open && <div style={{ fontWeight: 700, marginTop: 2 }}>{office.nextOpening}</div>}
-            <button className="linkbtn" style={{ color: 'var(--ink)', fontSize: 10.5, marginTop: 6 }} aria-expanded={hoursOpen} onClick={() => setHoursOpen(!hoursOpen)}>View full business hours {hoursOpen ? '^' : 'v'}</button>
+            <button className="linkbtn" style={{ color: 'var(--ink)', fontSize: 10.5, marginTop: 6 }} aria-expanded={hoursOpen} onClick={() => setHoursOpen(!hoursOpen)}>View Full Business Hours {hoursOpen ? '^' : 'v'}</button>
             {hoursOpen && <div style={{ marginTop: 8 }}><BusinessHoursPanel /></div>}
           </div>
           {!office.open && (
             <>
-              <div style={{ color: '#fff', fontWeight: 700, fontSize: 11.5, textAlign: 'center', marginTop: 4 }}>Off-hours emergency?</div>
+              <div style={{ color: '#fff', fontWeight: 700, fontSize: 11.5, textAlign: 'center', marginTop: 4 }}>Off-Hours Emergency?</div>
               <button className="emergency-btn" onClick={() => openModal(<EmergencyGuidance />)}>Click Here &nbsp;&gt;</button>
             </>
           )}
@@ -57,10 +57,10 @@ export default function Home() {
       </div>
 
       <section className="card">
-        <div className="row between"><h2 className="card-title">Your RMG Team</h2><span className="note">Quick contact</span></div>
+        <div className="row between"><h2 className="card-title">Your RMG Team</h2><span className="note">Quick Contact</span></div>
         <div style={{ marginTop: 6 }}>
-          <div className="list-row"><RmgAvatar /><div><div className="t">Account Manager</div><div className="s">Marketing &amp; support</div></div><button className="btn" style={{ marginLeft: 'auto', minWidth: 80 }} onClick={contactAM}>Contact</button></div>
-          <div className="list-row"><RmgAvatar /><div><div className="t">Photographer</div><div className="s">Photoshoot scheduling</div></div><button className="btn" style={{ marginLeft: 'auto', minWidth: 80 }} onClick={contactPH}>Contact</button></div>
+          <div className="list-row"><TeamAvatar role="accountManager" /><div><div className="t">Account Manager</div><div className="s">Marketing &amp; Support</div></div><button className="btn" style={{ marginLeft: 'auto', minWidth: 80 }} onClick={contactAM}>Contact</button></div>
+          <div className="list-row"><TeamAvatar role="photographer" /><div><div className="t">Photographer</div><div className="s">Photoshoot Scheduling</div></div><button className="btn" style={{ marginLeft: 'auto', minWidth: 80 }} onClick={contactPH}>Contact</button></div>
         </div>
       </section>
 
@@ -126,7 +126,7 @@ export default function Home() {
           </>
         ), { sim: 'Opens public post in production' })}>
           <span className={`statusdot ${client.latestPost ? 'green' : 'gray'}`} />
-          <div><div className="t">Latest social post published</div><div className="s">View published marketing activity</div></div>
+          <div><div className="t">Latest Social Post Published</div><div className="s">View Published Marketing Activity</div></div>
           <span className="chev">&gt;</span>
         </button>
         <hr className="divider" style={{ margin: '6px 0 12px' }} />
@@ -140,10 +140,10 @@ export default function Home() {
           <div className="row between">
             <div>
               <div style={{ marginTop: 6, fontSize: 12.5, color: ss === 'scheduled' ? 'var(--muted)' : ss === 'overdue' ? 'var(--red-text)' : 'var(--orange-text)', fontWeight: ss === 'scheduled' ? 400 : 700 }}>
-                {ss === 'scheduled' ? `${fmtMonthDay(client.shoot.date!)}  -  ${client.shoot.time!.replace(' ', '\u00a0')}` : ss === 'none' ? 'No shoot scheduled' : shootLine}
+                {ss === 'scheduled' ? `${fmtMonthDay(client.shoot.date!)}  -  ${client.shoot.time!.replace(' ', '\u00a0')}` : ss === 'none' ? 'No Shoot Scheduled' : shootLine}
               </div>
               <div className="note" style={{ marginTop: 6, fontSize: 11 }}>
-                {ss === 'scheduled' ? 'Your content shoot is confirmed.' : ss === 'pending' ? 'Date/time not yet confirmed | Contact Photographer >' : ss === 'overdue' ? 'Scheduling deadline missed | Contact Photographer >' : 'Contact Photographer >'}
+                {ss === 'scheduled' ? 'Your content shoot is confirmed.' : ss === 'pending' ? 'Date/Time Not Yet Confirmed | Contact Photographer >' : ss === 'overdue' ? 'Scheduling Deadline Missed | Contact Photographer >' : 'Contact Photographer >'}
               </div>
             </div>
             <span className="chev note">&gt;</span>
@@ -166,7 +166,7 @@ function KPI({ label, m, onClick }: { label: string; m: { value: number | null; 
     <button className="card" style={{ textAlign: 'left' }} onClick={onClick}>
       <div className="note" style={{ fontSize: 12.5 }}>{label}</div>
       {m.value === null ? (
-        <><div style={{ fontSize: 17, fontWeight: 700, marginTop: 10, color: 'var(--muted)' }}>Unavailable</div><div className="note" style={{ marginTop: 8, fontSize: 11 }}>Not connected or not yet verified</div></>
+        <><div style={{ fontSize: 17, fontWeight: 700, marginTop: 10, color: 'var(--muted)' }}>Unavailable</div><div className="note" style={{ marginTop: 8, fontSize: 11 }}>Not Connected or Not Yet Verified</div></>
       ) : (
         <><div className="big-number" style={{ marginTop: 6 }}>{fmtNum(m.value)}</div>{m.change !== undefined && <div style={{ color: 'var(--green-text)', fontSize: 11, marginTop: 8 }}>{m.change >= 0 ? '+' : ''}{m.change}%</div>}</>
       )}

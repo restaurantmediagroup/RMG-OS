@@ -82,7 +82,7 @@ function Revenue({ scale }: { scale: (n: number) => number }) {
   ), { sim: 'Demo values' });
   return (
     <>
-      <Band title="Revenue Snapshot" tag="Reservations & online ordering" plain />
+      <Band title="Revenue Snapshot" tag="Reservations & Online Ordering" plain />
       <p className="band-caption">Performance from your connected reservation, delivery and catering platforms.</p>
       <div className="grid2">
         {cards.map((c) => (
@@ -95,13 +95,13 @@ function Revenue({ scale }: { scale: (n: number) => number }) {
             )}
           </button>
         ))}
-        <div className="panel-blue"><strong>Source-aware Metrics</strong><p className="note" style={{ marginTop: 6 }}>Cards show their source, last sync, and availability.</p></div>
+        <div className="panel-blue"><strong>Source-Aware Metrics</strong><p className="note" style={{ marginTop: 6 }}>Cards show their source, last sync, and availability.</p></div>
       </div>
       <section className="card">
         <div className="row between wrap"><h3 style={{ fontSize: 15 }}>Total Online-Ordering Revenue</h3></div>
         <div className="row between wrap" style={{ marginTop: 14 }}>
           {ordering.length ? <div className="big-number" style={{ fontSize: 36 }}>{fmtUsd(total)}</div> : <div style={{ fontSize: 18, fontWeight: 700, color: 'var(--muted)' }}>No connected ordering platforms</div>}
-          <Badge tone="green">Platform-reported</Badge>
+          <Badge tone="green">Platform-Reported</Badge>
         </div>
         <p className="note" style={{ marginTop: 10 }}>Sample sales combined from {ordering.map((c) => c.name).join(', ').replace(/, ([^,]*)$/, ', and $1') || 'no connected platforms'}.</p>
         <p className="note" style={{ marginTop: 10 }}>Not automatically attributable to RMG marketing. OpenTable reservations are counted separately.</p>
@@ -119,13 +119,13 @@ function Marketing({ scale, weeks, label }: { scale: (n: number) => number; week
   const { client } = useStore();
   const info = useInfo();
   const m = client.perf.marketing;
-  if (!m) return (<><Band title="Marketing Snapshot" tag="Across connected channels" plain /><Unavailable title="Marketing Snapshot" body="Connected social and analytics accounts haven't returned verified data yet. Nothing is estimated while integrations are unavailable." /></>);
+  if (!m) return (<><Band title="Marketing Snapshot" tag="Across Connected Channels" plain /><Unavailable title="Marketing Snapshot" body="Connected social and analytics accounts haven't returned verified data yet. Nothing is estimated while integrations are unavailable." /></>);
   const tiles: [string, number][] = [['Total Impressions', scale(m.impressions)], ['Profile Page Views', scale(m.profileViews)], ['Social Link Clicks', scale(m.linkClicks)], ['Website Visits', scale(m.websiteVisits)], ['Total Engagements', scale(m.engagements)], ['Total Followers', m.followers]];
   const max = Math.max(...m.byNetwork.map((n) => n.value));
   const colors = ['var(--navy)', 'var(--orange)', '#7f9fcf', '#7fcf9f'];
   return (
     <>
-      <Band title="Marketing Snapshot" tag="Across connected channels" plain />
+      <Band title="Marketing Snapshot" tag="Across Connected Channels" plain />
       <p className="band-caption">Overall marketing performance aggregated across supported platforms.</p>
       <div className="grid2">
         {tiles.map(([l, v]) => <div key={l} className="card"><div className="note row" style={{ gap: 8 }}><span className="kdot" />{l}</div><div className="big-number" style={{ fontSize: 24, marginTop: 10 }}>{fmtNum(v)}</div></div>)}
@@ -213,7 +213,7 @@ function Digital({ scale }: { scale: (n: number) => number }) {
   const labels = ['Performance', 'Accessibility', 'Best Practices', 'SEO'];
   return (
     <>
-      <Band title="Digital Marketing Snapshot" tag="Traffic, conversions & site quality" plain />
+      <Band title="Digital Marketing Snapshot" tag="Traffic, Conversions & Site Quality" plain />
       {g ? (
         <section className="card stack">
           <div className="row between"><h3 className="card-title">Google Analytics 4</h3><Badge tone={CONN[g.conn].tone}>{CONN[g.conn].label}</Badge></div>
@@ -229,7 +229,7 @@ function Digital({ scale }: { scale: (n: number) => number }) {
         </section>
       ) : <Unavailable title="Google Analytics 4" body="GA4 isn't connected for this account, so website visits and conversions are unavailable rather than shown as zero." />}
 
-      <Band title="Digital Marketing Snapshot" tag="PageSpeed Insights & advertising" plain />
+      <Band title="Digital Marketing Snapshot" tag="PageSpeed Insights & Advertising" plain />
       {psi ? (
         <section className="card stack">
           <div className="row between wrap" style={{ alignItems: 'flex-start' }}>
@@ -289,7 +289,7 @@ function Social({ scale }: { scale: (n: number) => number }) {
   const tiles: [string, string][] = [['Impressions', fmtNum(scale(sel.impressions))], ['Profile Views', fmtNum(scale(sel.profileViews))], ['Total Link Clicks', fmtNum(scale(sel.linkClicks))], ['Website Clicks', fmtNum(scale(sel.websiteClicks))], ['Engagements', fmtNum(scale(sel.engagements))], ['Engagement Rate', `${sel.engagementRate}%`], ['Total Followers', fmtNum(sel.followers)]];
   return (
     <>
-      <Band title="Social Media Snapshot" tag="Individual social networks" plain />
+      <Band title="Social Media Snapshot" tag="Individual Social Networks" plain />
       <p className="band-caption">Select a network to view its own analytics and top three published posts.</p>
       <section className="card">
         <h3 style={{ fontSize: 14 }}>Social Platform</h3>
@@ -316,7 +316,7 @@ function Social({ scale }: { scale: (n: number) => number }) {
               <div key={i}>
                 <PostThumb tone={['steak', 'pasta', 'taco'][i]} />
                 <div style={{ fontWeight: 700, fontSize: 11.5, marginTop: 6 }}>{fmtNum(scale(e))} engagements</div>
-                <button className="linkbtn" style={{ color: 'var(--muted)', fontWeight: 400, fontSize: 10.5 }} onClick={() => info('Open Published Post', <p>Opens the already-published {sel.name} post. Scheduled or unpublished posts are never shown.</p>, { sim: 'Opens published post in production' })}>Open published post</button>
+                <button className="linkbtn" style={{ color: 'var(--muted)', fontWeight: 400, fontSize: 10.5 }} onClick={() => info('Open Published Post', <p>Opens the already-published {sel.name} post. Scheduled or unpublished posts are never shown.</p>, { sim: 'Opens published post in production' })}>Open Published Post</button>
               </div>
             ))}
           </div>

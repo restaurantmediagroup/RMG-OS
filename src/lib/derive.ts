@@ -36,12 +36,12 @@ export function deliveryPending(client: ClientRecord) {
 }
 
 export const AD_STATE: Record<AdState, { label: string; tone: 'green' | 'red' | 'orange' | 'gray'; sub: string }> = {
-  live: { label: 'Live', tone: 'green', sub: 'Connected status' },
-  paused: { label: 'Paused', tone: 'orange', sub: 'Campaigns paused' },
-  payment_issue: { label: 'Payment Issue', tone: 'red', sub: 'Ads stopped until billing is resolved' },
-  restricted: { label: 'Restricted', tone: 'red', sub: 'Account restricted by the platform' },
+  live: { label: 'Live', tone: 'green', sub: 'Connected Status' },
+  paused: { label: 'Paused', tone: 'orange', sub: 'Campaigns Paused' },
+  payment_issue: { label: 'Payment Issue', tone: 'red', sub: 'Ads Stopped Until Billing Is Resolved' },
+  restricted: { label: 'Restricted', tone: 'red', sub: 'Account Restricted by the Platform' },
   stopped: { label: 'Stopped', tone: 'red', sub: 'Ads are not delivering' },
-  unavailable: { label: 'Status Unavailable', tone: 'gray', sub: 'Not connected' },
+  unavailable: { label: 'Status Unavailable', tone: 'gray', sub: 'Not Connected' },
 };
 
 export const CONN: Record<ConnState, { label: string; tone: 'green' | 'gray' | 'red' | 'orange' }> = {

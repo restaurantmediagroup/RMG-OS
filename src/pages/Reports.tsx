@@ -89,7 +89,7 @@ function ReportsTab() {
         <div className="grid2">
           <div className="metric"><div className="lbl"><span className="kdot" />Website Visits</div><div className="val">{fmtNum(r.visits)}</div></div>
           <div className="metric"><div className="lbl"><span className="kdot" />Engagements</div><div className="val">{fmtNum(r.engagements)}</div></div>
-          <div className="metric"><div className="lbl"><span className="kdot" />Online Order Sales</div><div className="val">{fmtUsd(r.orderSales)}</div><div className="note" style={{ fontSize: 9.5 }}>Platform-reported</div></div>
+          <div className="metric"><div className="lbl"><span className="kdot" />Online Order Sales</div><div className="val">{fmtUsd(r.orderSales)}</div><div className="note" style={{ fontSize: 9.5 }}>Platform-Reported</div></div>
           <div className="metric"><div className="lbl"><span className="kdot" />Reporting Period</div><div className="val">{r.months}</div></div>
         </div>
         <div className="grid2">
@@ -198,7 +198,7 @@ function ArchiveModal() {
   const [kind, setKind] = useState<'All' | 'Monthly' | 'Quarterly' | 'Six-Month' | 'Annual'>('All');
   const list = client.reportHistory.filter((h) => kind === 'All' || h.kind === kind);
   return (
-    <Modal title="Report Archive" sub="Published monthly, quarterly, six-month and annual reports" wide>
+    <Modal title="Report Archive" sub="Published Monthly, Quarterly, Six-Month and Annual Reports" wide>
       <div className="seg">{(['All', 'Monthly', 'Quarterly', 'Six-Month', 'Annual'] as const).map((k) => <button key={k} className={kind === k ? 'on' : ''} onClick={() => setKind(k)}>{k}</button>)}</div>
       <div>{list.map((h) => (
         <div key={h.label} className="list-row"><strong style={{ width: 110, fontSize: 12.5 }}>{h.label}</strong><span className="note" style={{ flex: 1 }}>{h.name}</span>

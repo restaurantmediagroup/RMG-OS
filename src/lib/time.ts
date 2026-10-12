@@ -90,9 +90,9 @@ export function officeStatus(now: Date, override: OfficeOverride): OfficeStatus 
 
 export function greeting(now: Date): string {
   const h = nyParts(now).hour;
-  if (h < 12) return 'Good morning!';
-  if (h < 17) return 'Good afternoon!';
-  return 'Good evening!';
+  if (h < 12) return 'Good Morning!';
+  if (h < 17) return 'Good Afternoon!';
+  return 'Good Evening!';
 }
 
 export function weeklyHours(): { day: string; hours: string }[] {
