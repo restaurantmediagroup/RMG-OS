@@ -22,7 +22,7 @@ export default function Home() {
   const sb = SHOOT_BADGE[ss];
   const holidayDone = client.actionItems.length === 0;
 
-  const shootLine = ss === 'scheduled' ? `${fmtFull(client.shoot.date!).replace(/, (\d{4})$/, ', $1')}  |  ${client.shoot.time}`
+  const shootLine = ss === 'scheduled' ? `${fmtFull(client.shoot.date!).replace(/, (\d{4})$/, ', $1')}  |  ${client.shoot.time!.replace(' ', '\u00a0')}`
     : ss === 'pending' ? 'Confirm with your photographer' : ss === 'overdue' ? 'Respond to your photographer' : 'No shoot scheduled yet';
   const shootSub = ss === 'scheduled' ? `${client.shoot.type}  |  ${client.shoot.location}` : ss === 'pending' ? `${client.shoot.type}  |  Date/time not confirmed` : ss === 'overdue' ? `${client.shoot.type}  |  Scheduling deadline missed` : 'Contact your photographer to schedule';
 
@@ -140,7 +140,7 @@ export default function Home() {
           <div className="row between">
             <div>
               <div style={{ marginTop: 6, fontSize: 12.5, color: ss === 'scheduled' ? 'var(--muted)' : ss === 'overdue' ? 'var(--red-text)' : 'var(--orange-text)', fontWeight: ss === 'scheduled' ? 400 : 700 }}>
-                {ss === 'scheduled' ? `${fmtMonthDay(client.shoot.date!)}  -  ${client.shoot.time}` : ss === 'none' ? 'No shoot scheduled' : shootLine}
+                {ss === 'scheduled' ? `${fmtMonthDay(client.shoot.date!)}  -  ${client.shoot.time!.replace(' ', '\u00a0')}` : ss === 'none' ? 'No shoot scheduled' : shootLine}
               </div>
               <div className="note" style={{ marginTop: 6, fontSize: 11 }}>
                 {ss === 'scheduled' ? 'Your content shoot is confirmed.' : ss === 'pending' ? 'Date/time not yet confirmed | Contact Photographer >' : ss === 'overdue' ? 'Scheduling deadline missed | Contact Photographer >' : 'Contact Photographer >'}
@@ -168,7 +168,7 @@ function KPI({ label, m, onClick }: { label: string; m: { value: number | null; 
       {m.value === null ? (
         <><div style={{ fontSize: 17, fontWeight: 700, marginTop: 10, color: 'var(--muted)' }}>Unavailable</div><div className="note" style={{ marginTop: 8, fontSize: 11 }}>Not connected or not yet verified</div></>
       ) : (
-        <><div className="big-number" style={{ marginTop: 6 }}>{fmtNum(m.value)}</div>{m.change !== undefined && <div style={{ color: 'var(--green-text)', fontSize: 11, marginTop: 8 }}>+ +{m.change}%</div>}</>
+        <><div className="big-number" style={{ marginTop: 6 }}>{fmtNum(m.value)}</div>{m.change !== undefined && <div style={{ color: 'var(--green-text)', fontSize: 11, marginTop: 8 }}>{m.change >= 0 ? '+' : ''}{m.change}%</div>}</>
       )}
     </button>
   );
