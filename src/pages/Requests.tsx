@@ -4,7 +4,7 @@ import { OPEN_STATUSES, type Attachment, type RequestRecord, type RequestStatus 
 import { useStore } from '../store';
 import { useRequestsNav, type RequestsView } from '../lib/nav';
 import { fmtFull, fmtShort, fmtStamp } from '../lib/time';
-import { Badge, Band, FileInput, Ico, ListRow, Modal, PageFoot, PageHeader, SimTag, Tabs, RmgAvatar } from '../components/ui';
+import { Badge, Band, FileInput, Ico, ListRow, Modal, PageFoot, PageHeader, SimTag, Tabs, RmgAvatar, TeamAvatar } from '../components/ui';
 import { Field, useContactAM } from '../components/shared';
 
 const TABS = ['Current Requests', 'How to Submit a Request', 'Additional Services'] as const;
@@ -67,7 +67,7 @@ function CurrentTab() {
       <section className="card">
         <div className="row between"><h2 className="card-title">Your RMG Team</h2><span className="note" style={{ fontWeight: 700, letterSpacing: '.04em' }}>PRIMARY CONTACT</span></div>
         <div className="row between" style={{ marginTop: 12 }}>
-          <div className="row"><RmgAvatar /><div><div style={{ fontWeight: 700 }}>Account Manager</div><div className="note">Marketing, Requests & Support</div></div></div>
+          <div className="row"><TeamAvatar role="accountManager" /><div><div style={{ fontWeight: 700 }}>Account Manager</div><div className="note">Marketing, Requests & Support</div></div></div>
           <button className="btn" style={{ minWidth: 110 }} onClick={contactAM}>Contact</button>
         </div>
       </section>
@@ -82,9 +82,9 @@ function CurrentTab() {
       <section className="card">
         <h2 className="card-title">What Would You Like to Do?</h2>
         <div style={{ marginTop: 8 }}>
-          <ListRow icon={<Ico lg>M</Ico>} title="Request a Meeting" sub="Purpose, availability, context and attachments" onClick={() => nav('meeting')} />
-          <ListRow icon={<Ico lg>F</Ico>} title="Share General Feedback" sub="Ideas, suggestions or concerns" onClick={() => nav('feedback')} />
-          <ListRow icon={<Ico lg>H</Ico>} title="Holiday Planning" sub="Submit hours, specials, menus and promotions" onClick={() => nav('holiday')} />
+          <ListRow icon={<Ico lg>M</Ico>} title="Request a Meeting" sub="Purpose, Availability, Context and Attachments" onClick={() => nav('meeting')} />
+          <ListRow icon={<Ico lg>F</Ico>} title="Share General Feedback" sub="Ideas, Suggestions or Concerns" onClick={() => nav('feedback')} />
+          <ListRow icon={<Ico lg>H</Ico>} title="Holiday Planning" sub="Submit Hours, Specials, Menus and Promotions" onClick={() => nav('holiday')} />
         </div>
       </section>
 
@@ -138,7 +138,7 @@ function RequestDetail({ id }: { id: string }) {
           {r.history.map((h, i) => (
             <div key={i} className="row" style={{ alignItems: 'flex-start', fontSize: 12 }}>
               <span className={`statusdot ${h.status === 'Completed' ? 'green' : h.status === 'Waiting on Client' ? 'orange' : 'gray'}`} style={{ marginTop: 4 }} />
-              <div><strong>{h.status}</strong> <span className="note">· {fmtStamp(h.at)} · {h.by !== 'Client' && <RmgAvatar size={14} />}{h.by}</span>{h.note && <p className="note" style={{ color: 'var(--ink)' }}>{h.note}</p>}</div>
+              <div><strong>{h.status}</strong> <span className="note">· {fmtStamp(h.at)} · {h.by === 'Account Manager' ? <TeamAvatar role="accountManager" size={14} /> : h.by !== 'Client' && <RmgAvatar size={14} />}{h.by}</span>{h.note && <p className="note" style={{ color: 'var(--ink)' }}>{h.note}</p>}</div>
             </div>
           ))}
         </div>
@@ -207,7 +207,7 @@ function HowTab() {
     ['Submit Through the Portal', 'Choose request type and provide dates, files, links and context.'],
     ['RMG Reviews and Routes the Request', 'Your account manager coordinates the appropriate team.'],
     ['Track the Request', 'See Submitted, In Progress, Waiting on Client or Completed.'],
-    ['Request a Meeting if Needed', 'Calls are for strategy or clarification, not initial intake.'],
+    ['Request a Meeting If Needed', 'Calls are for strategy or clarification, not initial intake.'],
   ];
   return (
     <>
@@ -222,7 +222,7 @@ function HowTab() {
           return (
             <div key={g.title} className={`acc${isOpen ? ' open' : ''}`}>
               <button className="acc-head" aria-expanded={isOpen} onClick={() => { setOpen(isOpen ? -1 : gi); setItem(null); }}>
-                <div><div className="t">{g.title}</div>{!isOpen && <div className="s">5 request groups</div>}</div>
+                <div><div className="t">{g.title}</div>{!isOpen && <div className="s">5 Request Groups</div>}</div>
                 <span className="act">{isOpen ? 'HIDE ^' : 'SHOW v'}</span>
               </button>
               {isOpen && (

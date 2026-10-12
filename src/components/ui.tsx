@@ -2,6 +2,7 @@ import { useRef, type ReactNode } from 'react';
 import type { Attachment } from '../data/types';
 import { useStore } from '../store';
 import rmgLogo from '../assets/rmg-logo.png';
+import { TEAM, type TeamRole } from '../data/team';
 
 export function PageHeader({ title, sub }: { title: string; sub: string }) {
   const { client, state } = useStore();
@@ -30,6 +31,11 @@ export function BrandMark() {
 /** RMG's profile photo: the circular logo, used wherever RMG or an RMG team member appears. */
 export function RmgAvatar({ size = 40, label }: { size?: number; label?: string }) {
   return <img className="rmg-avatar" src={rmgLogo} width={size} height={size} alt={label ?? ''} aria-hidden={label ? undefined : true} />;
+}
+
+/** Profile photo of an assigned RMG team member. */
+export function TeamAvatar({ role, size = 40 }: { role: TeamRole; size?: number }) {
+  return <img className="rmg-avatar team" src={TEAM[role].photo} width={size} height={size} alt={TEAM[role].role} />;
 }
 
 export function Tabs<T extends string>({ items, value, onChange, four, label }: { items: T[]; value: T; onChange: (v: T) => void; four?: boolean; label: string }) {

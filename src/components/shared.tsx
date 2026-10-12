@@ -24,7 +24,7 @@ export function useContactPhotographer() {
   const { openModal, closeModal } = useStore();
   const nav = useRequestsNav();
   return () => openModal(
-    <Modal title="Contact Your Photographer" sub="Photoshoot scheduling">
+    <Modal title="Contact Your Photographer" sub="Photoshoot Scheduling">
       <div><SimTag>Messaging simulated in demo</SimTag></div>
       <p>Your assigned photographer handles content shoot scheduling, shoot-day logistics and plan questions. General agency requests go to your account manager.</p>
       <div className="callout-orange">Reminder: cancel at least 7 days before the shoot to avoid cancellation fees. Shoot Plan changes should be requested at least 1 full day before the shoot.</div>

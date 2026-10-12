@@ -17,7 +17,7 @@ export default function Admin() {
   return (
     <>
       <PageHeader title="RMG Admin" sub="Internal demonstration of the staff workflows behind the client portal. Clients never see this view." />
-      <div className="demo-banner"><span>Internal RMG view (demo). Changes here update the client portal immediately so you can test each state.</span><SimTag>Demo only</SimTag></div>
+      <div className="demo-banner"><span>Internal RMG view (demo). Changes here update the client portal immediately so you can test each state.</span><SimTag>Demo Only</SimTag></div>
       <div style={{ overflowX: 'auto' }}><Tabs label="Admin sections" items={[...TABS]} value={current} onChange={(t) => setTab('admin', t)} /></div>
       {current === 'Requests' && <RequestsAdmin />}
       {current === 'Holidays' && <HolidaysAdmin />}
@@ -120,7 +120,7 @@ function ShootsAdmin() {
         <h2 className="card-title">Scheduling Cutoff</h2>
         <p className="card-sub">Global default day of month after which an unconfirmed shoot turns Overdue. Each account can override it below.</p>
         <div className="row wrap" style={{ gap: 10 }}>
-          <label htmlFor="cutoff-day" style={{ fontWeight: 700, fontSize: 12.5 }}>Default cutoff day</label>
+          <label htmlFor="cutoff-day" style={{ fontWeight: 700, fontSize: 12.5 }}>Default Cutoff Day</label>
           <input id="cutoff-day" type="number" min={1} max={28} className="input" style={{ width: 90 }} value={state.config.defaultCutoffDay} onChange={(e) => { const v = Math.min(28, Math.max(1, Number(e.target.value) || 1)); update((s) => { s.config.defaultCutoffDay = v; }); }} />
         </div>
       </section>
@@ -131,15 +131,15 @@ function ShootsAdmin() {
           <section key={c.id} className="card stack-sm">
             <div className="row between"><h2 className="card-title">{c.name}</h2><Badge tone={SHOOT_BADGE[ss].tone}>{SHOOT_BADGE[ss].label}</Badge></div>
             <div className="grid2 stack-mobile">
-              <div className="field"><label htmlFor={`sd-${c.id}`}>Shoot date</label><input id={`sd-${c.id}`} type="date" className="input" value={c.shoot.date ?? ''} onChange={(e) => update((s) => { s.clients[c.id].shoot.date = e.target.value || undefined; })} /></div>
-              <div className="field"><label htmlFor={`co-${c.id}`}>Account cutoff override</label><input id={`co-${c.id}`} type="date" className="input" value={c.shoot.cutoffOverride ?? ''} onChange={(e) => update((s) => { s.clients[c.id].shoot.cutoffOverride = e.target.value || undefined; })} /><span className="hint">Effective cutoff: {fmtFull(cutoffFor(c, state))}</span></div>
+              <div className="field"><label htmlFor={`sd-${c.id}`}>Shoot Date</label><input id={`sd-${c.id}`} type="date" className="input" value={c.shoot.date ?? ''} onChange={(e) => update((s) => { s.clients[c.id].shoot.date = e.target.value || undefined; })} /></div>
+              <div className="field"><label htmlFor={`co-${c.id}`}>Account Cutoff Override</label><input id={`co-${c.id}`} type="date" className="input" value={c.shoot.cutoffOverride ?? ''} onChange={(e) => update((s) => { s.clients[c.id].shoot.cutoffOverride = e.target.value || undefined; })} /><span className="hint">Effective cutoff: {fmtFull(cutoffFor(c, state))}</span></div>
             </div>
             <div className="row wrap" style={{ gap: 8 }}>
               <button className="btn sm" disabled={!c.shoot.date} onClick={() => { update((s) => { const sh = s.clients[c.id].shoot; sh.confirmed = !sh.confirmed; sh.noShoot = false; if (!sh.time) sh.time = '2:00 PM'; }); audit(`Shoot ${c.shoot.confirmed ? 'unconfirmed' : 'confirmed with photographer and client'}`, 'Photographer', c.id); }}>{c.shoot.confirmed ? 'Mark Unconfirmed' : 'Confirm Shoot'}</button>
               <button className="btn sm" onClick={() => { update((s) => { s.clients[c.id].shoot.planShared = !s.clients[c.id].shoot.planShared; }); audit(`Shoot Plan ${c.shoot.planShared ? 'withdrawn' : 'shared (approved version)'}`, 'Marketing Manager', c.id); }}>{c.shoot.planShared ? 'Withdraw Shoot Plan' : 'Share Approved Shoot Plan'}</button>
             </div>
             <hr className="divider" />
-            <strong style={{ fontSize: 13 }}>Delivery (shoot completed {fmtFull(c.delivery.shootCompletedOn)})</strong>
+            <strong style={{ fontSize: 13 }}>Delivery (Shoot Completed {fmtFull(c.delivery.shootCompletedOn)})</strong>
             <div className="grid2">
               {(['photos', 'videos'] as const).map((k) => (
                 <div className="field" key={k}><label htmlFor={`dl-${c.id}-${k}`}>{k === 'photos' ? 'Photos' : 'Videos'}</label>
@@ -191,7 +191,7 @@ function IntegrationsAdmin() {
         <p className="card-sub">Adapter layer ready for live connectors. None are connected in this demo.</p>
         <div className="table-wrap" style={{ marginTop: 10 }}>
           <table className="tbl"><thead><tr><th>Integration</th><th>Purpose</th><th>Status</th></tr></thead>
-            <tbody>{ADAPTERS.map((a) => <tr key={a.key}><td><strong>{a.name}</strong></td><td className="note">{a.purpose}</td><td><Badge tone="gray">Demo data</Badge></td></tr>)}</tbody></table>
+            <tbody>{ADAPTERS.map((a) => <tr key={a.key}><td><strong>{a.name}</strong></td><td className="note">{a.purpose}</td><td><Badge tone="gray">Demo Data</Badge></td></tr>)}</tbody></table>
         </div>
       </section>
     </>
@@ -232,7 +232,7 @@ function OnboardingAdmin() {
             ))}
             <button className="btn primary" disabled={!done || o.activated} onClick={() => { update((s) => { s.onboarding.find((y) => y.id === o.id)!.activated = true; }); audit('Client activated by CSR (manual Activate Client)', o.csr, o.id); toast(`${o.name} activated (demo).`); }}>{o.activated ? 'Client Activated' : 'Activate Client'}</button>
             {!done && <p className="note">Activate Client unlocks once every onboarding requirement is complete.</p>}
-            <SimTag>Demonstration flow, not connected to the onboarding codebase</SimTag>
+            <SimTag>Demonstration Flow, Not Connected to the Onboarding Codebase</SimTag>
           </section>
         );
       })}

@@ -92,10 +92,10 @@ function Upcoming() {
             <div>
               <h2 className="card-title" style={{ fontSize: 18 }}>Upcoming Content Shoot</h2>
               {ss === 'scheduled' && <div style={{ fontWeight: 700, fontSize: 15, marginTop: 4 }}>{fmtFull(client.shoot.date!)}  |  {client.shoot.time}</div>}
-              {ss === 'pending' && <div style={{ fontWeight: 700, fontSize: 15, marginTop: 4, color: 'var(--orange-text)' }}>Confirm with your photographer</div>}
-              {ss === 'overdue' && <div style={{ fontWeight: 700, fontSize: 15, marginTop: 4, color: 'var(--red-text)' }}>Respond to your photographer</div>}
-              {ss === 'none' && <div style={{ fontWeight: 700, fontSize: 15, marginTop: 4, color: 'var(--muted)' }}>No upcoming shoot scheduled</div>}
-              <div className="note" style={{ marginTop: 6 }}>{client.shoot.type}  |  {ss === 'scheduled' ? client.shoot.location : ss === 'pending' ? 'Date/time not confirmed' : ss === 'overdue' ? 'Scheduling deadline missed' : 'Contact your photographer to schedule'}</div>
+              {ss === 'pending' && <div style={{ fontWeight: 700, fontSize: 15, marginTop: 4, color: 'var(--orange-text)' }}>Confirm With Your Photographer</div>}
+              {ss === 'overdue' && <div style={{ fontWeight: 700, fontSize: 15, marginTop: 4, color: 'var(--red-text)' }}>Respond to Your Photographer</div>}
+              {ss === 'none' && <div style={{ fontWeight: 700, fontSize: 15, marginTop: 4, color: 'var(--muted)' }}>No Upcoming Shoot Scheduled</div>}
+              <div className="note" style={{ marginTop: 6 }}>{client.shoot.type}  |  {ss === 'scheduled' ? client.shoot.location : ss === 'pending' ? 'Date/Time Not Confirmed' : ss === 'overdue' ? 'Scheduling Deadline Missed' : 'Contact Your Photographer to Schedule'}</div>
             </div>
           </div>
           <Badge tone={sb.tone}>{sb.label}</Badge>
@@ -163,7 +163,7 @@ function Delivery() {
 
   return (
     <>
-      <Band title="Content Delivery & Rush Requests" tag="Hide when nothing is pending" />
+      <Band title="Content Delivery & Rush Requests" tag="Hide When Nothing Is Pending" />
       <div className="grid2 stack-mobile">{card('photo')}{card('video')}</div>
       <div className="panel-blue" style={{ padding: 12, fontSize: 12 }}>Photo and video delivery statuses are independent. This entire section automatically disappears once every required delivery is completed.</div>
     </>

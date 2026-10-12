@@ -134,7 +134,7 @@ export interface ClientRecord {
   perf: PerfData;
   reports: ReportPeriod[];
   lifetime: { impressions: string; visits: number; engagements: number; since: string } | null;
-  wins: { title: string; value: string; detail: string; source: string; period: string; baseline: string; evidence: string; cls: 'Measured' | 'Attributed' | 'Platform-reported' }[];
+  wins: { title: string; value: string; detail: string; source: string; period: string; baseline: string; evidence: string; cls: 'Measured' | 'Attributed' | 'Platform-Reported' }[];
   insights: { working: string; opportunities: string };
   reportHistory: { label: string; name: string; kind: 'Monthly' | 'Quarterly' | 'Six-Month' | 'Annual' }[];
   brand: BrandSnapshot | null;

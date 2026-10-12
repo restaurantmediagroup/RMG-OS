@@ -80,10 +80,10 @@ const playa: ClientRecord = {
   perf: {
     revenue: [
       { key: 'opentable', name: 'OpenTable', letter: 'O', value: 342, unit: 'count', label: 'Reservations', conn: 'connected', synced: T0 },
-      { key: 'ubereats', name: 'Uber Eats', letter: 'U', value: 8420, unit: 'usd', label: 'Order revenue', conn: 'connected', synced: T0 },
-      { key: 'doordash', name: 'DoorDash', letter: 'D', value: 12650, unit: 'usd', label: 'Order revenue', conn: 'connected', synced: T0 },
-      { key: 'grubhub', name: 'Grubhub', letter: 'G', value: 3280, unit: 'usd', label: 'Order revenue', conn: 'connected', synced: T0 },
-      { key: 'ezcater', name: 'ezCater', letter: 'e', value: 5900, unit: 'usd', label: 'Catering revenue', conn: 'connected', synced: T0 },
+      { key: 'ubereats', name: 'Uber Eats', letter: 'U', value: 8420, unit: 'usd', label: 'Order Revenue', conn: 'connected', synced: T0 },
+      { key: 'doordash', name: 'DoorDash', letter: 'D', value: 12650, unit: 'usd', label: 'Order Revenue', conn: 'connected', synced: T0 },
+      { key: 'grubhub', name: 'Grubhub', letter: 'G', value: 3280, unit: 'usd', label: 'Order Revenue', conn: 'connected', synced: T0 },
+      { key: 'ezcater', name: 'ezCater', letter: 'e', value: 5900, unit: 'usd', label: 'Catering Revenue', conn: 'connected', synced: T0 },
     ],
     marketing: {
       impressions: 284500, profileViews: 18420, linkClicks: 3240, websiteVisits: 8420, engagements: 12650, followers: 24380,
@@ -121,8 +121,8 @@ const playa: ClientRecord = {
   lifetime: { impressions: '5.82M', visits: 148200, engagements: 265400, since: 'March 2024' },
   wins: [
     { title: 'Website Traffic Growth', value: '+24%', detail: 'Vs. previous six-month period', source: 'Google Analytics 4', period: 'Apr 1 - Sep 30, 2026', baseline: '36,260 visits (Oct 2025 - Mar 2026)', evidence: 'Verified connected analytics', cls: 'Measured' },
-    { title: 'Audience Milestone', value: '20K+', detail: 'Combined followers across connected accounts', source: 'Social analytics', period: 'As of Sep 30, 2026', baseline: '15,900 followers (Mar 31, 2026)', evidence: 'Connected Instagram, Facebook, TikTok and YouTube accounts', cls: 'Measured' },
-    { title: 'Online Ordering Performance', value: '$84.2K', detail: 'Quarterly reported sales; not attributed revenue', source: 'Ordering platforms', period: 'Jul 1 - Sep 30, 2026', baseline: '$76,900 (Q2 2026)', evidence: 'Uber Eats, DoorDash, Grubhub and ezCater platform reports', cls: 'Platform-reported' },
+    { title: 'Audience Milestone', value: '20K+', detail: 'Combined Followers Across Connected Accounts', source: 'Social Analytics', period: 'As of Sep 30, 2026', baseline: '15,900 followers (Mar 31, 2026)', evidence: 'Connected Instagram, Facebook, TikTok and YouTube accounts', cls: 'Measured' },
+    { title: 'Online Ordering Performance', value: '$84.2K', detail: 'Quarterly Reported Sales; Not Attributed Revenue', source: 'Ordering Platforms', period: 'Jul 1 - Sep 30, 2026', baseline: '$76,900 (Q2 2026)', evidence: 'Uber Eats, DoorDash, Grubhub and ezCater platform reports', cls: 'Platform-Reported' },
   ],
   insights: { working: 'Website visits and social engagement are trending upward.', opportunities: 'Improve catering inquiries and track conversion performance more accurately.' },
   reportHistory: [
@@ -176,10 +176,10 @@ const columbia: ClientRecord = {
   perf: {
     revenue: [
       { key: 'opentable', name: 'OpenTable', letter: 'O', value: null, unit: 'count', label: 'Reservations', conn: 'not_connected' },
-      { key: 'ubereats', name: 'Uber Eats', letter: 'U', value: null, unit: 'usd', label: 'Order revenue', conn: 'not_connected' },
-      { key: 'doordash', name: 'DoorDash', letter: 'D', value: 4980, unit: 'usd', label: 'Order revenue', conn: 'connected', synced: T0 },
-      { key: 'grubhub', name: 'Grubhub', letter: 'G', value: null, unit: 'usd', label: 'Order revenue', conn: 'issue' },
-      { key: 'ezcater', name: 'ezCater', letter: 'e', value: null, unit: 'usd', label: 'Catering revenue', conn: 'not_connected' },
+      { key: 'ubereats', name: 'Uber Eats', letter: 'U', value: null, unit: 'usd', label: 'Order Revenue', conn: 'not_connected' },
+      { key: 'doordash', name: 'DoorDash', letter: 'D', value: 4980, unit: 'usd', label: 'Order Revenue', conn: 'connected', synced: T0 },
+      { key: 'grubhub', name: 'Grubhub', letter: 'G', value: null, unit: 'usd', label: 'Order Revenue', conn: 'issue' },
+      { key: 'ezcater', name: 'ezCater', letter: 'e', value: null, unit: 'usd', label: 'Catering Revenue', conn: 'not_connected' },
     ],
     marketing: null,
     ga4: null,
@@ -212,7 +212,7 @@ const columbia: ClientRecord = {
     future: 'Pizza Ovens - Nationwide Shipping via Goldbelly (When in Stock)',
     segments: [
       { title: 'Primary: Adults 30–65+', detail: 'Traditional Italian-American cuisine, thin-crust pizza, quality ingredients and community.' },
-      { title: 'Secondary: Families with Children', detail: 'Comfort, familiarity, approachable dining and quality food.' },
+      { title: 'Secondary: Families With Children', detail: 'Comfort, familiarity, approachable dining and quality food.' },
       { title: 'Business Professionals', detail: 'Business lunches, meetings and small corporate gatherings.' },
     ],
     budget: '$300', placements: 'Facebook & Instagram',
@@ -290,12 +290,12 @@ export function seedState(): AppState {
     ],
     onboarding: [
       { id: 'sol', name: 'Sol Cantina', csr: 'CSR Team', activated: false, checklist: [
-        { label: 'Signed service agreement on file', done: true },
-        { label: 'Business & Brand Profile completed', done: true },
-        { label: 'Authorized contacts verified', done: true },
-        { label: 'Social account access granted', done: false },
-        { label: 'Launch Call completed (shoot terms reviewed)', done: false },
-        { label: 'Account Manager and Photographer assigned', done: true },
+        { label: 'Signed Service Agreement on File', done: true },
+        { label: 'Business & Brand Profile Completed', done: true },
+        { label: 'Authorized Contacts Verified', done: true },
+        { label: 'Social Account Access Granted', done: false },
+        { label: 'Launch Call Completed (Shoot Terms Reviewed)', done: false },
+        { label: 'Account Manager and Photographer Assigned', done: true },
       ] },
     ],
     config: { defaultCutoffDay: 20 },

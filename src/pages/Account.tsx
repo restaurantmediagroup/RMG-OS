@@ -3,7 +3,7 @@ import { useStore } from '../store';
 import { useRequestsNav } from '../lib/nav';
 import { OPEN_STATUSES, type Attachment } from '../data/types';
 import { TURNAROUND_TEXT, EMERGENCY_ROUTING } from '../data/catalog';
-import { Badge, FileInput, Ico, ListRow, Modal, PageFoot, PageHeader, SimTag, Toggle, useInfo, RmgAvatar } from '../components/ui';
+import { Badge, FileInput, Ico, ListRow, Modal, PageFoot, PageHeader, SimTag, Toggle, useInfo, TeamAvatar } from '../components/ui';
 import { BusinessHoursPanel, Field } from '../components/shared';
 
 type Screen = 'overview' | 'business' | 'services' | 'preferences' | 'policy-hours' | 'policy-requests' | 'policy-shoot';
@@ -14,7 +14,7 @@ const HEAD: Record<Screen, { title: string; sub: string; crumb?: string }> = {
   services: { title: 'My Services & Resources', sub: 'Understand your active services and access approved account materials.', crumb: 'Business & Account / Policies & Resources' },
   preferences: { title: 'Preferences & Security', sub: 'Control approved notifications and manage secure portal access.', crumb: 'Preferences & Security / Settings' },
   'policy-hours': { title: 'Business Hours & Emergencies', sub: 'RMG availability and urgent assistance.', crumb: 'Policies & Resources / Policy' },
-  'policy-requests': { title: 'Request Guidelines & Turnaround Times', sub: 'How requests are submitted and handled.', crumb: 'Policies & Resources / Policy' },
+  'policy-requests': { title: 'Request Guidelines & Turnaround Times', sub: 'How Requests Are Submitted and Handled.', crumb: 'Policies & Resources / Policy' },
   'policy-shoot': { title: 'Content & Shoot Policies', sub: 'Preparation, delivery, and cancellations.', crumb: 'Policies & Resources / Policy' },
 };
 
@@ -67,25 +67,25 @@ function Overview({ open }: { open: (s: Screen, a?: string) => void }) {
       <section className="card">
         <h2 className="card-title" style={{ fontSize: 16 }}>Business & Account</h2>
         <div style={{ marginTop: 6 }}>
-          <ListRow icon={<Ico lg>B</Ico>} title="Business Information" sub="Restaurant details, hours, and locations" onClick={() => open('business')} />
-          <ListRow icon={<Ico lg>C</Ico>} title="Contacts & Team" sub="Authorized contacts and assigned RMG team" onClick={() => open('business', 'contacts')} />
-          <ListRow icon={<Ico lg>S</Ico>} title="My Services" sub="Active marketing services and package" onClick={() => open('services')} />
+          <ListRow icon={<Ico lg>B</Ico>} title="Business Information" sub="Restaurant Details, Hours, and Locations" onClick={() => open('business')} />
+          <ListRow icon={<Ico lg>C</Ico>} title="Contacts & Team" sub="Authorized Contacts and Assigned RMG Team" onClick={() => open('business', 'contacts')} />
+          <ListRow icon={<Ico lg>S</Ico>} title="My Services" sub="Active Marketing Services and Package" onClick={() => open('services')} />
         </div>
       </section>
       <section className="card">
         <h2 className="card-title" style={{ fontSize: 16 }}>Policies & Resources</h2>
         <div style={{ marginTop: 6 }}>
-          <ListRow icon={<Ico lg>H</Ico>} title="Business Hours & Emergencies" sub="RMG availability and urgent assistance" onClick={() => open('policy-hours')} />
-          <ListRow icon={<Ico lg>R</Ico>} title="Request Guidelines & Turnaround Times" sub="How requests are submitted and handled" onClick={() => open('policy-requests')} />
-          <ListRow icon={<Ico lg>P</Ico>} title="Content & Shoot Policies" sub="Preparation, delivery, and cancellations" onClick={() => open('policy-shoot')} />
-          <ListRow icon={<Ico lg>D</Ico>} title="Documents & Agreements" sub="Important account records and policies" onClick={() => open('services', 'documents')} />
+          <ListRow icon={<Ico lg>H</Ico>} title="Business Hours & Emergencies" sub="RMG Availability and Urgent Assistance" onClick={() => open('policy-hours')} />
+          <ListRow icon={<Ico lg>R</Ico>} title="Request Guidelines & Turnaround Times" sub="How Requests Are Submitted and Handled" onClick={() => open('policy-requests')} />
+          <ListRow icon={<Ico lg>P</Ico>} title="Content & Shoot Policies" sub="Preparation, Delivery, and Cancellations" onClick={() => open('policy-shoot')} />
+          <ListRow icon={<Ico lg>D</Ico>} title="Documents & Agreements" sub="Important Account Records and Policies" onClick={() => open('services', 'documents')} />
         </div>
       </section>
       <section className="card">
         <h2 className="card-title" style={{ fontSize: 16 }}>Preferences & Security</h2>
         <div style={{ marginTop: 6 }}>
-          <ListRow icon={<Ico lg>N</Ico>} title="Notification Preferences" sub="Email, text, and portal alerts" onClick={() => open('preferences')} />
-          <ListRow icon={<Ico lg>L</Ico>} title="Login & Security" sub="Password and account access" onClick={() => open('preferences', 'security')} />
+          <ListRow icon={<Ico lg>N</Ico>} title="Notification Preferences" sub="Email, Text, and Portal Alerts" onClick={() => open('preferences')} />
+          <ListRow icon={<Ico lg>L</Ico>} title="Login & Security" sub="Password and Account Access" onClick={() => open('preferences', 'security')} />
         </div>
       </section>
     </>
@@ -140,8 +140,8 @@ function Business({ anchor }: { anchor: string }) {
         <hr className="divider" />
         <p style={{ fontWeight: 700, fontSize: 13 }}>Your RMG Team</p>
         <div className="grid2 stack-mobile" style={{ marginTop: 10 }}>
-          <div className="row"><RmgAvatar /><div><div style={{ fontWeight: 700 }}>Account Manager</div><div className="note">Marketing strategy and requests</div></div></div>
-          <div className="row"><RmgAvatar /><div><div style={{ fontWeight: 700 }}>Photographer</div><div className="note">Content shoot scheduling</div></div></div>
+          <div className="row"><TeamAvatar role="accountManager" /><div><div style={{ fontWeight: 700 }}>Account Manager</div><div className="note">Marketing Strategy and Requests</div></div></div>
+          <div className="row"><TeamAvatar role="photographer" /><div><div style={{ fontWeight: 700 }}>Photographer</div><div className="note">Content Shoot Scheduling</div></div></div>
         </div>
         <div className="minirow" style={{ marginTop: 14, background: 'var(--blue-panel)', borderColor: 'var(--blue-panel-line)', fontSize: 11.5 }}>Public-facing updates require RMG verification before publishing.</div>
       </section>
@@ -214,9 +214,9 @@ function Services({ open, anchor }: { open: (s: Screen, a?: string) => void; anc
       <section className="card">
         <h2 className="card-title">Policies & Resources</h2>
         <div style={{ marginTop: 6 }}>
-          <ListRow icon={<Ico lg>B</Ico>} title="Business Hours & Emergencies" sub="Office availability and after-hours guidance" onClick={() => open('policy-hours')} />
-          <ListRow icon={<Ico lg>R</Ico>} title="Request Guidelines & Turnaround Times" sub="Submitting requests and expected time frames" onClick={() => open('policy-requests')} />
-          <ListRow icon={<Ico lg>C</Ico>} title="Content & Shoot Policies" sub="Content planning, rush options, and cancellation fees" onClick={() => open('policy-shoot')} />
+          <ListRow icon={<Ico lg>B</Ico>} title="Business Hours & Emergencies" sub="Office Availability and After-Hours Guidance" onClick={() => open('policy-hours')} />
+          <ListRow icon={<Ico lg>R</Ico>} title="Request Guidelines & Turnaround Times" sub="Submitting Requests and Expected Time Frames" onClick={() => open('policy-requests')} />
+          <ListRow icon={<Ico lg>C</Ico>} title="Content & Shoot Policies" sub="Content Planning, Rush Options, and Cancellation Fees" onClick={() => open('policy-shoot')} />
         </div>
       </section>
       <div ref={docsRef} style={{ scrollMarginTop: 70 }} />

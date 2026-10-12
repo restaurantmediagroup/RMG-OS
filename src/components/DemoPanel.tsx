@@ -30,20 +30,20 @@ export default function DemoPanel({ onClose }: { onClose: () => void }) {
         <div className="modal-head"><div><h3>Demo Controls</h3><p className="card-sub">Switch states to test the approved behaviors. Not part of the client UI.</p></div><button className="xbtn" onClick={onClose} aria-label="Close">×</button></div>
         <div className="modal-body">
           <Group label="View As">
-            <Seg value={state.role} options={[['client', 'Client'], ['admin', 'RMG Admin (internal)']]} onChange={(v) => update((s) => { s.role = v as 'client' | 'admin'; if (v === 'client' && s.page === 'admin') s.page = 'home'; })} />
+            <Seg value={state.role} options={[['client', 'Client'], ['admin', 'RMG Admin (Internal)']]} onChange={(v) => update((s) => { s.role = v as 'client' | 'admin'; if (v === 'client' && s.page === 'admin') s.page = 'home'; })} />
           </Group>
           <Group label="Client Account">
             <Seg value={state.clientId} options={Object.values(state.clients).map((c) => [c.id, c.name])} onChange={(v) => update((s) => { s.clientId = v; })} />
             <p className="hint">Each client's data is separate. Columbia Inn shows the approved Brand Snapshot and several disconnected-integration states.</p>
           </Group>
-          <Group label={`RMG Office Status (actual now: ${office.open ? 'Open' : 'Closed'}, ET)`}>
+          <Group label={`RMG Office Status (Actual Now: ${office.open ? 'Open' : 'Closed'}, ET)`}>
             <Seg value={state.officeOverride} options={[['auto', 'Live Clock'], ['open', 'Force Open'], ['closed', 'Force Closed']]} onChange={(v) => update((s) => { s.officeOverride = v as typeof s.officeOverride; })} />
           </Group>
           <Group label="Content Shoot State">
             <Seg value={ss} options={[['scheduled', 'Scheduled'], ['pending', 'Pending'], ['overdue', 'Overdue'], ['none', 'None']]} onChange={(v) => setShoot(v as ShootStatus)} />
           </Group>
           <Group label="Content Delivery">
-            <Seg value={dKey} options={[['none', 'Both Pending'], ['photos', 'Photos Done, Videos Editing'], ['both', 'Both Delivered (section hides)']]} onChange={(v) => {
+            <Seg value={dKey} options={[['none', 'Both Pending'], ['photos', 'Photos Done, Videos Editing'], ['both', 'Both Delivered (Section Hides)']]} onChange={(v) => {
               if (v === 'none') setDelivery('Processing', 'Editing'); else if (v === 'photos') setDelivery('Delivered', 'Editing'); else setDelivery('Delivered', 'Delivered');
             }} />
           </Group>
